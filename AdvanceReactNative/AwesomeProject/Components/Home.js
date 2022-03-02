@@ -1,7 +1,8 @@
-import { View, Text,Image,StyleSheet, TouchableOpacity ,Alert,Linking} from 'react-native'
+import { View, Text,Image,StyleSheet,ScrollView, TouchableOpacity ,Alert,Linking} from 'react-native'
 import React from 'react'
 import AppLoading from 'expo-app-loading';
-import { useFonts,Inter_100Thin,Inter_200ExtraLight,Inter_300Light,Inter_400Regular,Inter_500Medium,Inter_600SemiBold,Inter_700Bold,Inter_800ExtraBold,Inter_900Black } from '@expo-google-fonts/inter';
+import { useFonts,Inter_100Thin,Inter_200ExtraLight,Inter_300Light,Inter_500Medium,Inter_600SemiBold,Inter_700Bold,Inter_800ExtraBold,Inter_900Black } from '@expo-google-fonts/inter';
+import MenuNavigation from './MenuNavigation';
 
 const Home = (props) => {
     const {title,subtitle,link1,link2,btn1,btn2,desc} = props;
@@ -27,7 +28,7 @@ const Home = (props) => {
   }
 
   let [fontsLoaded] = useFonts({
-    Inter_100Thin,Inter_200ExtraLight,Inter_300Light,Inter_400Regular,Inter_500Medium,Inter_600SemiBold,Inter_700Bold,Inter_800ExtraBold,Inter_900Black
+    Inter_100Thin,Inter_200ExtraLight,Inter_300Light,Inter_500Medium,Inter_600SemiBold,Inter_700Bold,Inter_800ExtraBold,Inter_900Black
   });
 
   if (!fontsLoaded) {
@@ -35,6 +36,7 @@ const Home = (props) => {
   }
   const description = desc;
   return (
+    <View>
     <View style={styled.container}>
        <View style={styled.centerview}>
          <Image source={require("../images/profile.jpg")} style={styled.img}/>
@@ -47,17 +49,21 @@ const Home = (props) => {
            <Text style={styled.desc}>{description}</Text>
           </View>
           <TouchableOpacity style={{color:"black",borderColor:"black",borderWidth:2,padding:20,borderRadius:20,marginTop:20}} onPress={()=>{
-            showalert("FACEBOOK","Are you join with me on facebook",link1);
+            showalert("YOUTUBE CHANNEL","Are you visit my youtube channel",link2);
           }}>
             <Text style={{fontSize:15,fontWeight:"800",textTransform:"uppercase",letterSpacing:2,fontFamily:"Inter_600SemiBold"}}>{btn2}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity style={{color:"black",borderColor:"black",borderWidth:2,padding:20,borderRadius:20,marginTop:20}} onPress={()=>{
-             showalert("YOUTUBE CHANNEL","Are you visit my youtube channel",link2);
+             showalert("FACEBOOK ","Are you join with me on facebook",link1);
           }}>
             <Text style={{fontSize:15,fontWeight:"800",textTransform:"uppercase",letterSpacing:2,fontFamily:"Inter_600SemiBold"}}>{btn1}</Text>
           </TouchableOpacity>
+
+          <MenuNavigation />
     </View>
+
+          </View>
   )
     }
     
